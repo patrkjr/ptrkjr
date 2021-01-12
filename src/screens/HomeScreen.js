@@ -28,7 +28,7 @@ const HomeScreen = () => {
     >
       <Image
         style={styles.profileImage}
-        source={require('../../assets/profile_small.jpeg')}
+        source={require('../../assets/profile_small.png')}
       />
       <View
         style={styles.chatBox}
@@ -39,9 +39,6 @@ const HomeScreen = () => {
         Product {'\n'}
         Designer
       </Text>
-    </View>
-    <View style={{ height: 200, backgroundColor: 'orange'}}>
-
     </View>
   </View>
 }

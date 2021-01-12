@@ -7,7 +7,9 @@ import IconButton from './IconButton';
 
 const Header = ({ }) => {
   return <View style={styles.container}>
-    <Text style={[FontStyles.h5, {color: Colors.primary, fontFamily: 'Inter_500Medium',}]}>ptkjr</Text>
+    <Text style={[FontStyles.h5, {color: Colors.primary, fontFamily: 'Inter_900Black', fontStyle: 'italic'}]}>
+      PTRKJR
+    </Text>
     <Link
       to='mailto:patrick.jessen@icloud.com'
       accessibilityRole="link"

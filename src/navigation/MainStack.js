@@ -16,7 +16,7 @@ const MainStack = () => {
     }}
   >
     <Stack.Screen name="Home" component={HomeScreen}
-      options={{ title: 'ptkjr.dk'}}
+      options={{ title: 'PTRKJR.dk'}}
     />
   </Stack.Navigator>
 }
