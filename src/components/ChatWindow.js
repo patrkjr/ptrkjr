@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Image, Linking } from 'react-native';
 
 import { Layouts, FontStyles, Colors } from '../../constants/Styles';
 import ReplyField from './ReplyField';
@@ -9,6 +9,7 @@ import SentMsg from './SentMsg';
 
 const ChatWindow = ({ width }) => {
   const ref = useRef(null);
+  const subject = "Let's get in touch"
   const [messages, setMessages] = useState([]);
 
   function addMsg (msg) {
@@ -72,14 +73,17 @@ const ChatWindow = ({ width }) => {
       ref={ref}
       onContentSizeChange={()=> ref.current.scrollToEnd()}
       ListHeaderComponent={() => <View style={styles.spacer}/>}
+      ListFooterComponent={() => <View style={styles.spacer}/>}
       renderItem={({ item }) => {
         return item.component();
       }}
     />
     <ReplyField onSubmit={(msg) => {
-      addMsg(
-        () => <SentMsg msg={msg}/>
-      );
+      Linking.openURL(`mailto:patrick.jessen@icloud.com?subject=${subject}&body=${msg}`);
+      // Posing a msg DISABLED as the code current tried to create an email
+      // addMsg(
+      //   () => <SentMsg msg={msg}/>
+      // );
     }}/>
   </View>
 }
@@ -110,6 +114,7 @@ const styles = StyleSheet.create({
   },
   jumboHeading: {
     color: Colors.primary,
+    flexGrow: 1,
     paddingRight: Layouts.mediumSpacing,
     marginBottom: Layouts.mediumSpacing,
     marginLeft: Layouts.mediumSpacing,

@@ -28,6 +28,7 @@ const RecievedMsg = ({ msg }) => {
 const styles = StyleSheet.create({
   container: {
     width: 0,
+    flex: 1,
     minWidth: '100%',
     flexDirection: 'row',
     marginLeft: Layouts.mediumSpacing,
