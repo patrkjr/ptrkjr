@@ -4,26 +4,41 @@ const borderRadius = 24;
 const Colors = {
   primary: '#0692E2',
   secondary: "#8D4EF4",
-  white: '#FFFFFF'
+  white: '#FFFFFF',
+  black: '#1B1B1B',
+  lightGrey: "#DADADA",
+  mediumOpacityBlack: "rgba(0,0,0,0.15)"
+}
+
+const smallShadow = {
+  elevation: 4,
+  shadowOffset: {
+    width: 0,
+    height: 4,
+  },
+  shadowOpacity: 0.12,
+  shadowRadius: 16,
+  shadowColor: '#000'
+}
+
+const mediumShadow = {
+  elevation: 12,
+  shadowOffset: {
+    width: 0,
+    height: 4,
+  },
+  shadowOpacity: 0.2,
+  shadowRadius: 30,
+  shadowColor: '#000'
 }
 
 const Layouts = {
   smallSpacing: 5,
   mediumSpacing: 15,
   largeSpacing: 40,
+  smallShadow,
   mediumShadow,
   borderRadius
-}
-
-const mediumShadow = {
-  elevation: 4,
-  shadowOffset: {
-    width: 0,
-    height: 6,
-  },
-  shadowOpacity: 0.12,
-  shadowRadius: 20,
-  shadowColor: '#000'
 }
 
 const themedShadows = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Providers from './src/navigation';
-import AppLoading from 'expo-app-loading';
+//import AppLoading from 'expo-app-loading';
 import { useFonts,
   Inter_100Thin,
   Inter_200ExtraLight,
@@ -12,6 +12,8 @@ import { useFonts,
   Inter_800ExtraBold,
   Inter_900Black
 } from '@expo-google-fonts/inter';
+
+import Spinner from './src/components/Spinner';
 
 
 export default function App() {
@@ -28,7 +30,7 @@ export default function App() {
   });
 
   if (!fontsLoaded) {
-    return <AppLoading />
+    return <Spinner />
   }
 
   return (

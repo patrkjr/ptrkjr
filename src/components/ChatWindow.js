@@ -1,0 +1,128 @@
+import React, { useRef, useState, useEffect } from 'react';
+import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
+
+import { Layouts, FontStyles, Colors } from '../../constants/Styles';
+import ReplyField from './ReplyField';
+import Separator from './Separator';
+import RecievedMsg from './RecievedMsg';
+import SentMsg from './SentMsg';
+
+const ChatWindow = ({ width }) => {
+  const ref = useRef(null);
+  const [messages, setMessages] = useState([]);
+
+  function addMsg (msg) {
+      setMessages( prevState => [
+        ...prevState,
+        {
+          id: prevState.length.toString(),
+          component:
+          () => (
+            msg()
+          )
+        }
+      ])
+  }
+
+  useEffect(() => {
+    setTimeout(function () {
+      addMsg(
+        () => <RecievedMsg msg={"Hi!"}/>
+      )
+    }, 700);
+    setTimeout(function () {
+      addMsg(
+        () => <RecievedMsg msg={"My name is Patrick"}/>
+      )
+    }, 2300);
+    setTimeout(function () {
+      addMsg(
+        () => <RecievedMsg msg={"And I'm a"}/>
+      )
+    }, 3500);
+    setTimeout(function () {
+      addMsg(
+        () =>   <Text style={[FontStyles.h1, styles.jumboHeading]}>
+                  Product {'\n'}
+                  Designer
+                </Text>
+      )
+    }, 5000);
+    setTimeout(function () {
+      addMsg(
+        () => <RecievedMsg msg={"Send me a message with contact info, and I'll get right back to you 🥳"}/>
+      )
+    }, 7500);
+  }, []);
+
+  return <View style={[styles.container, { width: width() }]}>
+    <View style={styles.listHeaderContainer}>
+      <View style={styles.listHeader}>
+        <Image
+          style={styles.profileImage}
+          source={require('../../assets/profile_small.png')}
+        />
+      </View>
+      <Separator/>
+    </View>
+    <FlatList
+      data={messages}
+      keyExtractor={item => item.id}
+      showsVerticalScrollIndicator={false}
+      ref={ref}
+      onContentSizeChange={()=> ref.current.scrollToEnd()}
+      ListHeaderComponent={() => <View style={styles.spacer}/>}
+      renderItem={({ item }) => {
+        return item.component();
+      }}
+    />
+    <ReplyField onSubmit={(msg) => {
+      addMsg(
+        () => <SentMsg msg={msg}/>
+      );
+    }}/>
+  </View>
+}
+
+const demo = {
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: Colors.white,
+    borderRadius: Layouts.borderRadius,
+    ...Layouts.mediumShadow,
+  },
+  listHeaderContainer: {
+    paddingHorizontal: Layouts.mediumSpacing
+  },
+  listHeader: {
+    paddingVertical: Layouts.mediumSpacing,
+    flexDirection: 'row',
+  },
+  profileImage: {
+    height: 60,
+    width: 60,
+    borderRadius: 250,
+  },
+  jumboHeading: {
+    color: Colors.primary,
+    paddingRight: Layouts.mediumSpacing,
+    marginBottom: Layouts.mediumSpacing,
+    marginLeft: Layouts.mediumSpacing,
+    fontStyle: 'italic',
+    opacity: 0,
+    textTransform: 'upperCase',
+    animationKeyframes: demo,
+    animationDuration: '2s',
+    animationFillMode: 'both'
+  },
+  spacer: {
+    height: Layouts.mediumSpacing
+  }
+})
+
+export default ChatWindow;
