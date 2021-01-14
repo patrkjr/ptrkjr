@@ -12,11 +12,14 @@ Stack.path = '';
 const MainStack = () => {
   return <Stack.Navigator
     screenOptions={{
-      header: () => <Header/>
+      header: (props) => <Header {...props}/>,
+      headerStyle: {
+        height: 65
+      }
     }}
   >
     <Stack.Screen name="Home" component={HomeScreen}
-      options={{ title: 'PTRKJR.dk'}}
+      options={{ title: 'PTRKJR'}}
     />
   </Stack.Navigator>
 }

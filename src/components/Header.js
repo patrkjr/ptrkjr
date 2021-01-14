@@ -5,8 +5,10 @@ import { Link } from '@react-navigation/native';
 import { Layouts, Colors, FontStyles } from '../../constants/Styles';
 import IconButton from './IconButton';
 
-const Header = ({ }) => {
-  return <View style={styles.container}>
+const Header = ({ scene }) => {
+  const { options } = scene.descriptor;
+  const { headerStyle } = options;
+  return <View style={[headerStyle, styles.container]}>
     <Text style={[FontStyles.h5, {color: Colors.primary, fontFamily: 'Inter_900Black', fontStyle: 'italic'}]}>
       PTRKJR
     </Text>
@@ -29,7 +31,6 @@ const styles = StyleSheet.create({
     position: 'fixed',
     flexDirection: 'row',
     backgroundColor: Colors.white,
-    height: 65,
     ...Layouts.mediumShadow
   }
 })

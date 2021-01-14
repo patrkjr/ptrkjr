@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useHeaderHeight } from '@react-navigation/stack';
 import { ScrollView, View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 
-import { Colors, FontStyles, Layouts } from '../../constants/Styles'
+import { Layouts, Colors } from '../../constants/Styles'
+import ChatWindow from '../components/ChatWindow';
 
 const HomeScreen = () => {
   const headerHeight = useHeaderHeight();
@@ -22,68 +23,39 @@ const HomeScreen = () => {
       Dimensions.removeEventListener('change', onChange);
     };
   });
-  return <View style={{ flex: 1 }}>
-    <View
-      style={[styles.heroContainer, { height: dimensions.window.height - headerHeight }]}
+  //// BUG: useHeaderRight returns 0, but only when making viewport smaller
+  //// Have hard coded marginTop for now, as mitigation
+  return <View
+      style={[styles.heroContainer, { height: dimensions.window.height - headerHeight, marginTop: 65 }]}
     >
-      <Image
-        style={styles.profileImage}
-        source={require('../../assets/profile_small.png')}
-      />
-      <View
-        style={styles.chatBox}
-      >
-        <Text style={[FontStyles.h5, styles.chatText]}>Hi, I'm Patrick, and I'm a</Text>
-      </View>
-      <Text style={[FontStyles.h1, styles.jumboHeading]}>
-        Product {'\n'}
-        Designer
-      </Text>
+      <ChatWindow width={() => {
+        const width = dimensions.window.width;
+        if (width < 461) {
+          return 300;
+        }
+        if (width < 500) {
+          return 320
+        }
+        if (width < 769) {
+          return 480
+        }
+        if (width < 1025) {
+          return 650
+        }
+        return 800
+      }}/>
     </View>
-  </View>
-}
-
- const demo = {
-   '0%': { opacity: 0 },
-   '100%': { opacity: 1 },
 }
 
 const styles = StyleSheet.create({
  heroContainer: {
+   flex: 1,
+   padding: Layouts.largeSpacing,
    alignItems: 'center',
    justifyContent: 'space-around',
-   padding: 100,
-   minHeight: 200,
    backgroundImage: `linear-gradient(145deg,${Colors.primary}, ${Colors.secondary})`
  },
-  profileImage: {
-    height: 250,
-    width: 250,
-    borderRadius: 250,
-  },
-  chatBox: {
-    height: 80,
-    justifyContent: 'center',
-    backgroundColor: Colors.primary,
-    borderRadius: Layouts.borderRadius,
-    ...Layouts.mediumShadow
-  },
-  chatText: {
-    color: Colors.white,
-    padding: Layouts.mediumSpacing,
-    paddingHorizontal: Layouts.largeSpacing
-  },
-  jumboHeading: {
-    color: Colors.white,
-    textAlign: 'center',
-    fontStyle: 'italic',
-    opacity: 0,
-    textTransform: 'upperCase',
-    animationKeyframes: demo,
-    animationDelay: '1s',
-    animationDuration: '2s',
-    animationFillMode: 'both'
-  }
+
 })
 
 export default HomeScreen;
