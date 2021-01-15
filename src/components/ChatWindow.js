@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useContext, useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, Image, Linking } from 'react-native';
 
 import { Layouts, FontStyles, Colors } from '../../constants/Styles';
@@ -28,17 +28,17 @@ const ChatWindow = ({ width }) => {
   useEffect(() => {
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={"Hi!"}/>
+        () => <RecievedMsg msg={'hi'}/>
       )
     }, 700);
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={"My name is Patrick"}/>
+        () => <RecievedMsg msg={'myNameIs'}/>
       )
     }, 2300);
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={"And I'm a"}/>
+        () => <RecievedMsg msg={'andImA'}/>
       )
     }, 3500);
     setTimeout(function () {
@@ -51,7 +51,7 @@ const ChatWindow = ({ width }) => {
     }, 5000);
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={"Send me a message with contact info, and I'll get right back to you 🥳"}/>
+        () => <RecievedMsg msg={'sendMeAMsg'}/>
       )
     }, 7500);
   }, []);
