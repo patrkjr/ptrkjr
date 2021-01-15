@@ -1,5 +1,5 @@
 const borderRadius = 24;
-
+const jumboRadius = 110;
 
 const Colors = {
   primary: '#0692E2',
@@ -38,7 +38,8 @@ const Layouts = {
   largeSpacing: 40,
   smallShadow,
   mediumShadow,
-  borderRadius
+  borderRadius,
+  jumboRadius
 }
 
 const themedShadows = {

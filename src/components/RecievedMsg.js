@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
 import { FontStyles, Colors, Layouts } from '../../constants/Styles';
 
+import { LocalizationContext } from '../navigation/Routes';
+
 const RecievedMsg = ({ msg }) => {
+  const { t, locale } = useContext(LocalizationContext);
   return <View style={styles.container}>
     <View style={styles.svg}>
       <Svg
@@ -21,7 +24,7 @@ const RecievedMsg = ({ msg }) => {
         />
       </Svg>
     </View>
-    <Text style={[FontStyles.h5, styles.msg]}>{msg}</Text>
+    <Text style={[FontStyles.h5, styles.msg]}>{t(msg)}</Text>
     </View>
 }
 

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { LocalizationContext } from '../navigation/Routes';
 
 import AppTextInput from './AppTextInput';
 import IconButton from './IconButton';
@@ -8,6 +9,7 @@ import Separator from './Separator'
 import { Colors, Layouts } from '../../constants/Styles';
 
 const ReplyField = ({ onSubmit }) => {
+  const { t } = useContext(LocalizationContext);
   const [value, setValue] = useState('');
   const onHandleSubmit = (ref) => {
     if (ref) {
@@ -27,7 +29,7 @@ const ReplyField = ({ onSubmit }) => {
       onChangeText={(text) => {
         setValue(text);
       }}
-      placeholder={"Message"}
+      placeholder={t('msg')}
       onSubmit={(ref) => {
         onHandleSubmit(ref)
       }}

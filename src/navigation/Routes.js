@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
 
 import MainStack from './MainStack'
 import HomeScreen from '../screens/HomeScreen';
+
+import * as Localization from 'expo-localization';
+import i18n from 'i18n-js';
+
+import en from '../../locales/en';
+import da from '../../locales/da';
+
+i18n.fallbacks = true;
+i18n.defaultLocale = 'en';
+i18n.translations = { da, en };
+i18n.translations["en-US", 'en-GB'] = en;
 
 const prefix = Linking.makeUrl('/');
 
@@ -21,10 +32,23 @@ const linking = {
   config
 }
 
+export const LocalizationContext = React.createContext();
+
 export default function Routes(){
+  const [locale, setLocale] = useState(Localization.locale);
+  const localizationContext = useMemo(
+    () => ({
+      t: (scope, options) => i18n.t(scope, { locale, ...options }),
+      locale,
+      setLocale,
+    }),
+    [locale]
+  );
   return(
-    <NavigationContainer linking={linking}>
-      <MainStack/>
-    </NavigationContainer>
+    <LocalizationContext.Provider value={localizationContext}>
+      <NavigationContainer linking={linking}>
+        <MainStack/>
+      </NavigationContainer>
+    </LocalizationContext.Provider>
   )
 }
