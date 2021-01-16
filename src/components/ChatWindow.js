@@ -1,5 +1,6 @@
 import React, { useRef, useContext, useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, Image, Linking } from 'react-native';
+import { LocalizationContext } from '../navigation/Routes';
 
 import { Layouts, FontStyles, Colors } from '../../constants/Styles';
 import ReplyField from './ReplyField';
@@ -8,6 +9,7 @@ import RecievedMsg from './RecievedMsg';
 import SentMsg from './SentMsg';
 
 const ChatWindow = ({ width }) => {
+  const { t } = useContext(LocalizationContext);
   const ref = useRef(null);
   const subject = "Let's get in touch"
   const [messages, setMessages] = useState([]);
@@ -63,6 +65,7 @@ const ChatWindow = ({ width }) => {
           style={styles.profileImage}
           source={require('../../assets/profile_small.png')}
         />
+        <Text style={[FontStyles.h5, { color: Colors.black, marginLeft: Layouts.mediumSpacing }]}>Patrick</Text>
       </View>
       <Separator/>
     </View>
@@ -79,8 +82,8 @@ const ChatWindow = ({ width }) => {
       }}
     />
     <ReplyField onSubmit={(msg) => {
-      Linking.openURL(`mailto:patrick.jessen@icloud.com?subject=${subject}&body=${msg}`);
-      // Posing a msg DISABLED as the code current tried to create an email
+      Linking.openURL(`mailto:patrick.jessen@icloud.com?subject=${t('letsTalk')}&body=${msg}`);
+      // Posing a msg DISABLED as the code currently tries to create an email
       // addMsg(
       //   () => <SentMsg msg={msg}/>
       // );
@@ -106,6 +109,7 @@ const styles = StyleSheet.create({
   listHeader: {
     paddingVertical: Layouts.mediumSpacing,
     flexDirection: 'row',
+    alignItems: 'center',
   },
   profileImage: {
     height: 60,

@@ -4,7 +4,8 @@ const en = {
   myNameIs: 'My name is Patrick',
   andImA: "And I'm a",
   sendMeAMsg: "Send me a message, and I'll get right back to you 🥳",
-  msg: 'Message'
+  msg: 'Message',
+  letsTalk: "Let's get in touch"
 };
 
 export default en;

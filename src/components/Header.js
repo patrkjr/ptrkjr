@@ -18,13 +18,13 @@ const Header = ({ scene }) => {
         to='tel:+45 42 33 12 33'
         accessibilityRole="link"
       >
-        <IconButton name={'phone'} color={Colors.primary} size={30}/>
+        <IconButton name={'phone'} color={Colors.white} size={30}/>
       </Link>
       <Link
         to='mailto:patrick.jessen@icloud.com'
         accessibilityRole="link"
       >
-        <IconButton name={'mail'} color={Colors.primary} size={30}/>
+        <IconButton name={'mail'} color={Colors.white} size={30}/>
       </Link>
     </View>
     <View style={styles.headerRight}>
@@ -56,8 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     position: 'fixed',
     flexDirection: 'row',
-    backgroundColor: Colors.white,
-    ...Layouts.mediumShadow
+    backgroundColor: 'transparent',
   },
   headerRight: {
     flexDirection: 'row',
@@ -69,6 +68,7 @@ const styles = StyleSheet.create({
   },
   locale: {
     borderWidth: 1,
+    color: Colors.white,
     borderColor: Colors.lightGrey,
     borderRadius: Layouts.borderRadius,
     paddingHorizontal: Layouts.mediumSpacing,

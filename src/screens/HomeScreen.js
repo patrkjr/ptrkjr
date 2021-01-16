@@ -26,7 +26,7 @@ const HomeScreen = () => {
   //// BUG: useHeaderRight returns 0, but only when making viewport smaller
   //// Have hard coded marginTop for now, as mitigation
   return <View
-      style={[styles.heroContainer, { height: dimensions.window.height - headerHeight, marginTop: 65 }]}
+      style={[styles.heroContainer, { height: dimensions.window.height}]}
     >
         <View style={[styles.gradient, { top: -100, left: 150 }]}/>
         <View style={[styles.gradient, { top: 350, left: 20, transform: 'rotate(-10deg)', }]}/>
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
    flex: 1,
    overflow: 'hidden',
    padding: Layouts.largeSpacing,
+   paddingTop: 100,
    alignItems: 'center',
    minHeight: 400,
    justifyContent: 'space-around',

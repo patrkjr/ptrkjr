@@ -12,9 +12,10 @@ Stack.path = '';
 const MainStack = () => {
   return <Stack.Navigator
     screenOptions={{
+      headerTransparent: true,
       header: (props) => <Header {...props}/>,
       headerStyle: {
-        height: 65
+        height: 65,
       }
     }}
   >
