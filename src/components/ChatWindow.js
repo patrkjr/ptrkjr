@@ -29,23 +29,23 @@ const ChatWindow = ({ width }) => {
         }
       ])
   }
-
+  let startMsg = 500;
   useEffect(() => {
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={'hi'}/>
+        () => <RecievedMsg msg={'hi'} delay={1000}/>
       )
-    }, 700);
+    }, startMsg);
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={'myNameIs'}/>
+        () => <RecievedMsg msg={'myNameIs'} delay={3000}/>
       )
-    }, 2300);
+    }, startMsg += 2000);
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={'andImA'}/>
+        () => <RecievedMsg msg={'andImA'} delay={3000}/>
       )
-    }, 3500);
+    }, startMsg += 3500);
     setTimeout(function () {
       addMsg(
         () =>   <FancyText style={styles.jumboHeading}>
@@ -53,12 +53,12 @@ const ChatWindow = ({ width }) => {
                   Designer
                 </FancyText>
       )
-    }, 5000);
+    }, startMsg += 5000);
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={'sendMeAMsg'}/>
+        () => <RecievedMsg msg={'sendMeAMsg'} delay={3500}/>
       )
-    }, 7500);
+    }, startMsg += 1000);
   }, []);
 
   return <View style={[styles.container, { width: width(), backgroundColor: colors.background }]}>
