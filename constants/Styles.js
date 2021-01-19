@@ -66,10 +66,28 @@ const mediumShadow = {
   shadowColor: '#000'
 }
 
+const animationKeyframes = {
+  '0%': {
+    opacity: 0,
+    top: 40
+  },
+  '100%': {
+    opacity: 1,
+    top: 0
+  }
+}
+
+const msgAnimation = {
+  animationKeyframes,
+  animationDuration: '300ms',
+  animationFillMode: 'both',
+}
+
 const Layouts = {
   smallSpacing: 5,
   mediumSpacing: 15,
   largeSpacing: 40,
+  msgAnimation,
   smallShadow,
   mediumShadow,
   borderRadius,

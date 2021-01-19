@@ -11,24 +11,27 @@ const RecievedMsg = ({ msg }) => {
   const { t, locale } = useContext(LocalizationContext);
   const { colors } = useTheme();
   return <View style={styles.container}>
-    <View style={styles.svg}>
-      <Svg
-        width={21}
-        height={25}
-        viewBox="0 0 21 25"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        {...SvgProps}
-      >
-        <Path
-          d="M0 24.898S11 21.5 11 0l10 19.907C8 26.146 0 24.898 0 24.898z"
-          fill={colors.cardBackground}
-        />
-      </Svg>
+    <View style={styles.animationContainer}>
+      <View style={styles.svg}>
+        <Svg
+          width={21}
+          height={25}
+          viewBox="0 0 21 25"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          {...SvgProps}
+        >
+          <Path
+            d="M0 24.898S11 21.5 11 0l10 19.907C8 26.146 0 24.898 0 24.898z"
+            fill={colors.cardBackground}
+          />
+        </Svg>
+      </View>
+      <Text style={[FontStyles.h5, styles.msg, { color: colors.text, backgroundColor: colors.cardBackground }]}>{t(msg)}</Text>
     </View>
-    <Text style={[FontStyles.h5, styles.msg, { color: colors.text, backgroundColor: colors.cardBackground }]}>{t(msg)}</Text>
-    </View>
+  </View>
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -39,6 +42,10 @@ const styles = StyleSheet.create({
     marginLeft: Layouts.mediumSpacing,
     paddingRight: Layouts.mediumSpacing,
     marginBottom: Layouts.mediumSpacing,
+  },
+  animationContainer: {
+    flexDirection: 'row',
+    ...Layouts.msgAnimation
   },
   svg: {
     marginRight: -10,

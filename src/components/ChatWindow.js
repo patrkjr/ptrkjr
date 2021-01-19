@@ -94,11 +94,6 @@ const ChatWindow = ({ width }) => {
   </View>
 }
 
-const demo = {
-  '0%': { opacity: 0 },
-  '100%': { opacity: 1 },
-}
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -126,9 +121,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     opacity: 0,
     textTransform: 'upperCase',
-    animationKeyframes: demo,
-    animationDuration: '2s',
-    animationFillMode: 'both'
+    ...Layouts.msgAnimation
   },
   spacer: {
     height: Layouts.mediumSpacing
