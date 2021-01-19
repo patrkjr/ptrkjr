@@ -1,8 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 const Separator = ({ thickness, opacity, theme }) => {
-  const backgroundColor = theme === 'dark-content' ? 'white' : 'black'
+  const backgroundColor = theme ||
+    useTheme().dark ? 'white' : 'black'
   return (
     <View style={{
       width: '100%',

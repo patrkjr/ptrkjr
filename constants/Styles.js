@@ -3,11 +3,45 @@ const jumboRadius = 110;
 
 const Colors = {
   primary: '#0692E2',
-  secondary: "#8D4EF4",
+  darkPrimary: '#26AAC6',
+  secondary: "#8E4FF5",
+  darkSecondary: '#E19522',
   white: '#FFFFFF',
   black: '#1B1B1B',
   lightGrey: "#DADADA",
-  mediumOpacityBlack: "rgba(0,0,0,0.15)"
+  darkGrey: '#313131',
+  mediumOpacityBlack: "rgba(0,0,0,0.15)",
+  mediumOpacityWhite: "rgba(255,255,255,0.15)"
+}
+
+const DefaultTheme = {
+  dark: false,
+  colors: {
+    primary: Colors.primary,
+    secondary: Colors.secondary,
+    themedBackgroundGradientStart: Colors.primary,
+    themedBackgroundGradientEnd: Colors.secondary,
+    background: Colors.white,
+    cardBackground: Colors.lightGrey,
+    text: Colors.black,
+    border: Colors.lightGrey,
+    notification: 'rgb(255, 69, 58)'
+  }
+}
+
+const DarkTheme = {
+  dark: true,
+  colors: {
+    primary: Colors.darkPrimary,
+    secondary: Colors.darkSecondary,
+    themedBackgroundGradientStart: "#043544",
+    themedBackgroundGradientEnd: "#321F02",
+    background: Colors.black,
+    cardBackground: Colors.darkGrey,
+    text: Colors.white,
+    border: Colors.lightGrey,
+    notification: 'rgb(255, 69, 58)'
+  }
 }
 
 const smallShadow = {
@@ -78,5 +112,7 @@ const FontStyles = {
 export {
   FontStyles,
   Layouts,
-  Colors
+  Colors,
+  DefaultTheme,
+  DarkTheme
 }

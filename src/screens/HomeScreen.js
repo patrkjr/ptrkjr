@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useHeaderHeight } from '@react-navigation/stack';
 import { ScrollView, View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 import { Layouts, Colors } from '../../constants/Styles'
 import ChatWindow from '../components/ChatWindow';
 
 const HomeScreen = () => {
+  const { colors } = useTheme();
   const headerHeight = useHeaderHeight();
   const [dimensions, setDimensions] = useState(
     {
@@ -26,7 +28,10 @@ const HomeScreen = () => {
   //// BUG: useHeaderRight returns 0, but only when making viewport smaller
   //// Have hard coded marginTop for now, as mitigation
   return <View
-      style={[styles.heroContainer, { height: dimensions.window.height}]}
+      style={[styles.heroContainer, {
+        height: dimensions.window.height,
+        backgroundImage: `linear-gradient(145deg,${colors.themedBackgroundGradientStart}, ${colors.themedBackgroundGradientEnd})`
+      }]}
     >
         <View style={[styles.gradient, { top: -100, left: 150 }]}/>
         <View style={[styles.gradient, { top: 350, left: 20, transform: 'rotate(-10deg)', }]}/>
@@ -59,7 +64,6 @@ const styles = StyleSheet.create({
    alignItems: 'center',
    minHeight: 400,
    justifyContent: 'space-around',
-   backgroundImage: `linear-gradient(145deg,${Colors.primary}, ${Colors.secondary})`
  },
  gradient: {
    position: 'absolute',

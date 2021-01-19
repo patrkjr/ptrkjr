@@ -1,20 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import {View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Link } from '@react-navigation/native';
+import { Link, useTheme } from '@react-navigation/native';
+import { ThemeContext } from '../navigation/Routes';
 
-import { Layouts, Colors, FontStyles } from '../../constants/Styles';
+import { Layouts, Colors, FontStyles, DefaultTheme, DarkTheme } from '../../constants/Styles';
 import IconButton from './IconButton';
 
 import {LocalizationContext} from '../navigation/Routes';
 
-const Header = ({ scene }) => {
+const Header = ({ scene, ...otherProps }) => {
   const { locale, setLocale } = useContext(LocalizationContext);
+  const { dark, colors } = useTheme();
   const { options } = scene.descriptor;
   const { headerStyle } = options;
+
+  const { scheme, setScheme } = useContext(ThemeContext);
+
+  const handleOnChangeTheme = () => {
+    setScheme(scheme == 'light' ? 'dark' : 'light');
+  }
   return <View style={[headerStyle, styles.container]}>
     <View style={styles.headerLeft}>
       <Link
-        style={styles.linkButton}
+        style={styles.iconButton}
         to='tel:+45 42 33 12 33'
         accessibilityRole="link"
       >
@@ -28,10 +36,9 @@ const Header = ({ scene }) => {
       </Link>
     </View>
     <View style={styles.headerRight}>
-      {
-        //Theme changer goes here
-        //<IconButton name={'moon'} color={Colors.primary} size={30}/>
-      }
+      <IconButton style={styles.iconButton} name={ dark ? 'sun' : 'moon'} color={Colors.white} size={30}
+        onPress={handleOnChangeTheme}
+      />
       <TouchableOpacity
         onPress={() => {
           setLocale(locale == 'da-dk' ? 'en-GB' : 'da-dk')
@@ -74,7 +81,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: Layouts.mediumSpacing,
     paddingVertical: 10,
   },
-  linkButton: {
+  iconButton: {
     marginRight: Layouts.mediumSpacing
   }
 })

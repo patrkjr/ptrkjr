@@ -1,18 +1,20 @@
 import React, { useRef } from 'react';
 import { TextInput, View, StyleSheet } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
 import { FontStyles, Colors, Layouts } from '../../constants/Styles';
 
 const AppTextInput = ({ value, onChangeText, onSubmit, ...otherProps }) => {
+  const { dark, colors } = useTheme();
   const ref = useRef(null);
   const onHandleSubmit = () => {
     onSubmit(ref);
 
   }
-  return <View style={styles.container}>
+  return <View style={[styles.container,  {backgroundColor: colors.cardBackground}]}>
     <TextInput
       ref={ref}
-      style={styles.input}
+      style={[styles.input, { color: colors.text }]}
       value={value}
       multiline={true}
       blurOnSubmit={true}
@@ -29,7 +31,6 @@ const AppTextInput = ({ value, onChangeText, onSubmit, ...otherProps }) => {
 const styles = StyleSheet.create({
   container: {
     borderRadius: Layouts.borderRadius,
-    backgroundColor: Colors.mediumOpacityBlack,
     flex: 1,
   },
   input: {

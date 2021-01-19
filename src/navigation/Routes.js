@@ -1,6 +1,9 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
+import { useColorScheme } from 'react-native-appearance';
+import { useTheme } from '@react-navigation/native';
+import { DefaultTheme, DarkTheme } from '../../constants/Styles';
 
 import MainStack from './MainStack'
 import HomeScreen from '../screens/HomeScreen';
@@ -33,8 +36,19 @@ const linking = {
 }
 
 export const LocalizationContext = React.createContext();
+export const navigationRef = React.createRef();
+export const ThemeContext = React.createContext();
 
 export default function Routes(){
+  const systemTheme = useColorScheme();
+  const [scheme, setScheme] = useState(systemTheme);
+  const themeContext = useMemo(
+    () => ({
+      scheme,
+      setScheme
+    }),
+    [scheme]
+  );
   const [locale, setLocale] = useState(Localization.locale);
   const localizationContext = useMemo(
     () => ({
@@ -44,11 +58,20 @@ export default function Routes(){
     }),
     [locale]
   );
+
+  useEffect(() => {
+    if (systemTheme !== scheme) {
+      setScheme(scheme == 'dark' ? 'light' : 'dark');
+    }
+  }, [systemTheme]);
+
   return(
     <LocalizationContext.Provider value={localizationContext}>
-      <NavigationContainer linking={linking}>
+    <ThemeContext.Provider value={themeContext}>
+      <NavigationContainer linking={linking} ref={navigationRef} theme={scheme == 'dark' ? DarkTheme : DefaultTheme }>
         <MainStack/>
       </NavigationContainer>
+    </ThemeContext.Provider>
     </LocalizationContext.Provider>
   )
 }

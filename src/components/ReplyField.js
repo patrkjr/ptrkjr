@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { useTheme } from '@react-navigation/native';
 import { LocalizationContext } from '../navigation/Routes';
 
 import AppTextInput from './AppTextInput';
@@ -10,6 +11,7 @@ import { Colors, Layouts } from '../../constants/Styles';
 
 const ReplyField = ({ onSubmit }) => {
   const { t } = useContext(LocalizationContext);
+  const { colors } = useTheme();
   const [value, setValue] = useState('');
   const onHandleSubmit = (ref) => {
     if (ref) {
@@ -35,10 +37,10 @@ const ReplyField = ({ onSubmit }) => {
       }}
     />
     <IconButton
-      style={styles.sendButton}
+      style={[{backgroundColor: colors.primary}, styles.sendButton]}
       name={'arrow-right'}
       size={30}
-      color={Colors.white}
+      color={colors.background}
       onPress={() => {
         onHandleSubmit();
       }}
@@ -60,7 +62,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 60,
-    backgroundColor: Colors.primary
   }
 })
 
