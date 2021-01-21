@@ -117,23 +117,29 @@ const Layouts = {
 const FontStyles = {
   h1: {
     fontSize: 67.34,
-    fontFamily: 'Inter_900Black',
+    fontFamily: 'Inter_900Black, Sans-Serif',
+    fontWeight: '900',
+    fontStyle: 'bold'
   },
   h2: {
     fontSize: 50.52,
-    fontFamily: 'Inter_900Black',
+    fontFamily: 'Inter_900Black, Sans-Serif',
+    fontWeight: '900'
   },
   h3: {
     fontSize: 37.9,
-    fontFamily: 'Inter_900Black',
+    fontFamily: 'Inter_900Black, Sans-Serif',
+    fontWeight: '900'
   },
   h4: {
     fontSize: 28.43,
-    fontFamily: 'Inter_900Black',
+    fontFamily: 'Inter_900Black, Sans-Serif',
+    fontWeight: '900'
   },
   h5: {
     fontSize: 21.33,
-    fontFamily: 'Inter_700Bold'
+    fontFamily: 'Inter_700Bold, Sans-Serif',
+    fontWeight: '700'
   }
 }
 
