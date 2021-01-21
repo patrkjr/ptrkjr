@@ -5,6 +5,7 @@ import { ThemeContext } from '../navigation/Routes';
 
 import { Layouts, Colors, FontStyles, DefaultTheme, DarkTheme } from '../../constants/Styles';
 import IconButton from './IconButton';
+import { Feather } from '@expo/vector-icons';
 
 import {LocalizationContext} from '../navigation/Routes';
 
@@ -40,11 +41,13 @@ const Header = ({ scene, ...otherProps }) => {
         onPress={handleOnChangeTheme}
       />
       <TouchableOpacity
+        style={styles.locale}
         onPress={() => {
           setLocale(locale == 'da-dk' ? 'en-GB' : 'da-dk')
         }}
       >
-        <Text style={[FontStyles.h5, styles.locale]}>
+        <Feather name={'globe'} size={30} color={Colors.white}/>
+        <Text style={[FontStyles.h5, { color: Colors.white, marginLeft: Layouts.smallSpacing * 2 }]}>
         {
           locale.substring(0,2).toUpperCase()
         }
@@ -75,9 +78,11 @@ const styles = StyleSheet.create({
   },
   locale: {
     borderWidth: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
     color: Colors.white,
     borderColor: Colors.lightGrey,
-    borderRadius: Layouts.borderRadius,
+    borderRadius: Layouts.mediumRadius,
     paddingHorizontal: Layouts.mediumSpacing,
     paddingVertical: 10,
   },

@@ -30,7 +30,7 @@ const AppTextInput = ({ value, onChangeText, onSubmit, ...otherProps }) => {
 // IDEA: Use hooks for focus state, to change style
 const styles = StyleSheet.create({
   container: {
-    borderRadius: Layouts.borderRadius,
+    borderRadius: Layouts.mediumRadius,
     flex: 1,
   },
   input: {

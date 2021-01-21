@@ -9,6 +9,7 @@ import FancyText from './FancyText';
 import Separator from './Separator';
 import RecievedMsg from './RecievedMsg';
 import SentMsg from './SentMsg';
+import Bubbles from './Bubbles';
 
 const ChatWindow = ({ width }) => {
   const { t } = useContext(LocalizationContext);
@@ -16,6 +17,26 @@ const ChatWindow = ({ width }) => {
   const ref = useRef(null);
   const subject = "Let's get in touch"
   const [messages, setMessages] = useState([]);
+
+  const ProductDesigner = () => {
+    const [showBubbles, setShowBubbles] = useState(true);
+    const { primary } = useTheme().colors;
+    useEffect(() => {
+      setTimeout(() => setShowBubbles(false), 2500);
+    },[])
+    if (showBubbles) {
+      return <Bubbles />
+    }
+    return <View style={styles.animationContainer}>
+      <FancyText style={[FontStyles.h1, styles.jumboHeading ]}>
+        Product Designer
+      </FancyText>
+    </View>
+  }
+
+  const Msg = ({ msg, delay }) => (
+    <RecievedMsg msg={msg} delay={delay}/>
+  )
 
   function addMsg (msg) {
       setMessages( prevState => [
@@ -29,36 +50,33 @@ const ChatWindow = ({ width }) => {
         }
       ])
   }
-  let startMsg = 500;
+  let startMsg = 700;
   useEffect(() => {
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={'hi'} delay={1000}/>
+        () => <Msg msg={'hi'} delay={1200}/>
       )
     }, startMsg);
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={'myNameIs'} delay={3000}/>
+        () => <Msg msg={'myNameIs'} delay={2500}/>
       )
     }, startMsg += 2000);
     setTimeout(function () {
       addMsg(
-        () => <RecievedMsg msg={'andImA'} delay={3000}/>
+        () => <Msg msg={'andImA'} delay={2500}/>
       )
+    }, startMsg += 3200);
+    setTimeout(function () {
+      addMsg(
+        () => <ProductDesigner/>
+        )
     }, startMsg += 3500);
     setTimeout(function () {
       addMsg(
-        () =>   <FancyText style={styles.jumboHeading}>
-                  Product {'\n'}
-                  Designer
-                </FancyText>
+        () => <Msg msg={'sendMeAMsg'} delay={3500}/>
       )
-    }, startMsg += 5000);
-    setTimeout(function () {
-      addMsg(
-        () => <RecievedMsg msg={'sendMeAMsg'} delay={3500}/>
-      )
-    }, startMsg += 1000);
+    }, startMsg += 3000);
   }, []);
 
   return <View style={[styles.container, { width: width(), backgroundColor: colors.background }]}>
@@ -81,7 +99,9 @@ const ChatWindow = ({ width }) => {
       ListHeaderComponent={() => <View style={styles.spacer}/>}
       ListFooterComponent={() => <View style={styles.spacer}/>}
       renderItem={({ item }) => {
-        return item.component();
+        return <View style={styles.item}>
+          {item.component()}
+        </View>
       }}
     />
     <ReplyField onSubmit={(msg) => {
@@ -98,8 +118,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.white,
-    borderRadius: Layouts.borderRadius,
+    borderRadius: Layouts.mediumRadius,
     ...Layouts.mediumShadow,
+  },
+  item: {
+    paddingHorizontal: Layouts.mediumSpacing,
   },
   listHeaderContainer: {
     paddingHorizontal: Layouts.mediumSpacing
@@ -114,14 +137,15 @@ const styles = StyleSheet.create({
     width: 60,
     borderRadius: 250,
   },
-  jumboHeading: {
-    paddingRight: Layouts.mediumSpacing,
+  animationContainer: {
+    paddingRight: Layouts.jumboSpacing,
     marginBottom: Layouts.mediumSpacing,
-    marginLeft: Layouts.mediumSpacing,
-    fontStyle: 'italic',
-    opacity: 0,
-    textTransform: 'upperCase',
     ...Layouts.msgAnimation
+  },
+  jumboHeading: {
+    paddingLeft: Layouts.smallSpacing,
+    fontStyle: 'italic',
+    textTransform: 'upperCase',
   },
   spacer: {
     height: Layouts.mediumSpacing

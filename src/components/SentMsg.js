@@ -32,11 +32,15 @@ const SentMsg = ({ msg }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row-reverse',
-    marginHorizontal: Layouts.mediumSpacing,
+    width: 0,
+    flex: 1,
+    minWidth: '100%',
+    paddingLeft: Layouts.jumboSpacing,
     marginBottom: Layouts.mediumSpacing,
   },
   animationContainer: {
     flexDirection: 'row-reverse',
+    width: '100%',
     ...Layouts.msgAnimation
   },
   svg: {
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
   msg: {
     flexDirection: 'row',
     padding: Layouts.mediumSpacing,
-    borderRadius: Layouts.borderRadius,
+    borderRadius: Layouts.mediumRadius,
     ...Layouts.smallShadow
   }
 })

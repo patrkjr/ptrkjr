@@ -52,8 +52,7 @@ const styles = StyleSheet.create({
     flex: 1,
     minWidth: '100%',
     flexDirection: 'row',
-    marginLeft: Layouts.mediumSpacing,
-    paddingRight: Layouts.largeSpacing + Layouts.mediumSpacing,
+    paddingRight: Layouts.jumboSpacing,
     marginBottom: Layouts.mediumSpacing,
   },
   animationContainer: {
@@ -69,8 +68,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     color: Colors.black,
     padding: Layouts.mediumSpacing,
-    marginRight: Layouts.mediumSpacing,
-    borderRadius: Layouts.borderRadius,
+    borderRadius: Layouts.mediumRadius,
     ...Layouts.smallShadow
   }
 })

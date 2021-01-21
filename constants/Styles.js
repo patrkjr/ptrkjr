@@ -1,6 +1,4 @@
-const borderRadius = 24;
-const jumboRadius = 110;
-
+// COLORS
 const Colors = {
   primary: '#0692E2',
   darkPrimary: '#26AAC6',
@@ -44,6 +42,16 @@ const DarkTheme = {
   }
 }
 
+// LAYOUTS
+const smallRadius = 24;
+const mediumRadius = 24;
+const jumboRadius = 110;
+const borderRadius = {
+  smallRadius: 6,
+  mediumRadius: 24,
+  jumboRadius: 110
+}
+
 const smallShadow = {
   elevation: 4,
   shadowOffset: {
@@ -83,17 +91,6 @@ const msgAnimation = {
   animationFillMode: 'both',
 }
 
-const Layouts = {
-  smallSpacing: 5,
-  mediumSpacing: 15,
-  largeSpacing: 40,
-  msgAnimation,
-  smallShadow,
-  mediumShadow,
-  borderRadius,
-  jumboRadius
-}
-
 const themedShadows = {
   shadowOffset: {
     width: 0,
@@ -104,6 +101,19 @@ const themedShadows = {
   shadowColor: Colors.primary
 };
 
+const Layouts = {
+  smallSpacing: 4,
+  mediumSpacing: 16,
+  largeSpacing: 48,
+  jumboSpacing: 80,
+  msgAnimation,
+  smallShadow,
+  mediumShadow,
+  ...borderRadius,
+  jumboRadius
+}
+
+// FONTSTYLES
 const FontStyles = {
   h1: {
     fontSize: 67.34,
