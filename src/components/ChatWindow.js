@@ -15,12 +15,10 @@ const ChatWindow = ({ width }) => {
   const { t } = useContext(LocalizationContext);
   const { colors } = useTheme();
   const ref = useRef(null);
-  const subject = "Let's get in touch"
   const [messages, setMessages] = useState([]);
 
   const ProductDesigner = () => {
     const [showBubbles, setShowBubbles] = useState(true);
-    const { primary } = useTheme().colors;
     useEffect(() => {
       setTimeout(() => setShowBubbles(false), 2500);
     },[])
@@ -28,7 +26,7 @@ const ChatWindow = ({ width }) => {
       return <Bubbles />
     }
     return <View style={styles.animationContainer}>
-      <FancyText style={[FontStyles.h1, styles.jumboHeading ]}>
+      <FancyText style={styles.jumboHeading}>
         Product Designer
       </FancyText>
     </View>
@@ -84,7 +82,7 @@ const ChatWindow = ({ width }) => {
       <View style={styles.listHeader}>
         <Image
           style={styles.profileImage}
-          source={require('../../assets/profile_small.png')}
+          source={require('../../assets/profile_small.jpeg')}
         />
         <Text style={[FontStyles.h5, { color: colors.text, marginLeft: Layouts.mediumSpacing }]}>Patrick</Text>
       </View>
