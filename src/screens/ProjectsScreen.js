@@ -8,7 +8,7 @@ const ProjectsScreen = () => {
   //const { window } = useDimensions();
   const { dark, colors } = useTheme();
   const ptrTheme = !dark ?
-    { background: '#1B1B1B', text: 'white', img: require('../../assets/ptrkjr_image.jpg')} :
+    { background: '#fff', text: '#0692E2', img: require('../../assets/ptrkjr_image.jpg')} :
     { background: '#1B1B1B', text: 'white', img: require('../../assets/ptrkjr_image_dark.jpg') } ;
 
   const inSituTheme = dark ?
@@ -35,19 +35,19 @@ const ProjectsScreen = () => {
         title={"In situ"}
         release={"Release primo march 2021"}
         theme={inSituTheme}
-        font={{ fontFamily: 'BodoniModa_Bold' }}
+        font={{ fontSize: 56, fontFamily: 'BodoniModa_Bold' }}
       />
       <HeroBlock
         title={"LADOP"}
         release={"Release may 2020"}
         theme={ladopTheme}
-        font={{ fontSize: 64, fontFamily: 'Hardware_Regular' }}
+        font={{ fontSize: 56, fontFamily: 'Hardware_Regular' }}
       />
       <HeroBlock
         title={"zeam"}
         release={"Release ultimo march 2021 "}
         theme={zeamTheme}
-        font={{ fontFamily: 'FredokaOne_Regular' }}
+        font={{ fontSize: 56, fontFamily: 'FredokaOne_Regular' }}
       />
     </View>
   )
