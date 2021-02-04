@@ -30,9 +30,6 @@ const Loading = ({ colors }) => (
 export default function App() {
   const theme = useColorScheme('light') == "dark" ? DarkTheme : DefaultTheme;
   let [fontsLoaded] = useFonts({
-    Inter_100Thin,
-    Inter_200ExtraLight,
-    Inter_300Light,
     Inter_400Regular,
     Inter_500Medium,
     Inter_600SemiBold,
@@ -40,6 +37,11 @@ export default function App() {
     Inter_800ExtraBold,
     Inter_900Black,
     RobotoMono_500Medium,
+    'Hardware_Regular': require('./assets/fonts/DDCHardware-Regular.otf'),
+    'OpenSans_ExtraBold': require('./assets/fonts/OpenSans-ExtraBold.ttf'),
+    'OpenSans_Regular': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'BodoniModa_Bold': require('./assets/fonts/BodoniModa-Bold.ttf'),
+    'FredokaOne_Regular': require('./assets/fonts/FredokaOne-Regular.ttf')
   });
 
   return <AppearanceProvider>

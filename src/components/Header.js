@@ -1,9 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import {View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Link, useTheme } from '@react-navigation/native';
+import { useTheme } from '@react-navigation/native';
 import { ThemeContext } from '../navigation/Routes';
 
 import { Layouts, Colors, FontStyles, DefaultTheme, DarkTheme } from '../../constants/Styles';
+import Link from './Link';
 import IconButton from './IconButton';
 import { Feather } from '@expo/vector-icons';
 
@@ -36,6 +37,10 @@ const Header = ({ scene, ...otherProps }) => {
         <IconButton name={'mail'} color={Colors.white} size={30}/>
       </Link>
     </View>
+    <View>
+      <Link to="/">Home</Link>
+      <Link to="/projects">Projects</Link>
+    </View>
     <View style={styles.headerRight}>
       <IconButton style={styles.iconButton} name={ dark ? 'sun' : 'moon'} color={Colors.white} size={30}
         onPress={handleOnChangeTheme}
@@ -64,7 +69,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: Layouts.largeSpacing,
     justifyContent: 'space-between',
-    position: 'fixed',
     flexDirection: 'row',
     backgroundColor: 'transparent',
   },

@@ -26,6 +26,9 @@ const config = {
     Home: {
       path: ''
     },
+    Projects: {
+      path: 'projects'
+    },
     NotFound: '*'
   },
 }

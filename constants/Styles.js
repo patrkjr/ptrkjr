@@ -43,7 +43,7 @@ const DarkTheme = {
 }
 
 // LAYOUTS
-const smallRadius = 24;
+const smallRadius = 6;
 const mediumRadius = 24;
 const jumboRadius = 110;
 const borderRadius = {
@@ -113,31 +113,33 @@ const Layouts = {
   jumboRadius
 }
 
+const baseSize = 16;
+const fontScale = 1.250;
 // FONTSTYLES
 const FontStyles = {
   h1: {
-    fontSize: 67.34,
+    fontSize: 48.83,
     fontFamily: 'Inter_900Black, Sans-Serif',
     fontWeight: '900',
     fontStyle: 'bold'
   },
   h2: {
-    fontSize: 50.52,
+    fontSize: 39.06,
     fontFamily: 'Inter_900Black, Sans-Serif',
     fontWeight: '900'
   },
   h3: {
-    fontSize: 37.9,
+    fontSize: 31.25,
     fontFamily: 'Inter_900Black, Sans-Serif',
     fontWeight: '900'
   },
   h4: {
-    fontSize: 28.43,
+    fontSize: 25,
     fontFamily: 'Inter_900Black, Sans-Serif',
     fontWeight: '900'
   },
   h5: {
-    fontSize: 21.33,
+    fontSize: 20,
     fontFamily: 'Inter_700Bold, Sans-Serif',
     fontWeight: '700'
   }
