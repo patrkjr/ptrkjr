@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Platform, } from 'react-native';
+import { Text, View, TouchableOpacity, Platform, } from 'react-native';
 import { useLinkProps, useTheme } from '@react-navigation/native';
-import { Colors } from '../../constants/Styles';
 
 const Link = ({ children, action, to = "/#", style, hoverStyle, ...otherProps}) => {
   const { onPress, ...props } = useLinkProps({ to, action });
@@ -32,12 +31,6 @@ const Link = ({ children, action, to = "/#", style, hoverStyle, ...otherProps}) 
       <Text style={[style]}>{children}</Text>
     </TouchableOpacity>
   )
-}
-
-const styles = StyleSheet.create({
-  hover: {
-    color: Colors.primary,
-  }
-})
+};
 
 export default Link;

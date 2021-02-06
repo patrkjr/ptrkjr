@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from '../screens/HomeScreen';
-import ProjectsScreen from '../screens/ProjectsScreen';
+import ProjectsStack from '../navigation/ProjectsStack';
 //import HeaderTools from '../components/HeaderTools';
 import Header from '../components/Header';
 
@@ -21,9 +21,9 @@ const MainStack = () => {
     }}
   >
     <Stack.Screen name="Home" component={HomeScreen}
-      options={{ title: 'PTRKJR'}}
-    />
-    <Stack.Screen name="Projects" component={ProjectsScreen}/>
+      options={{ title: 'PTRKJR'}} />
+    <Stack.Screen name="Projects" component={ProjectsStack}/>
+
   </Stack.Navigator>
 }
 

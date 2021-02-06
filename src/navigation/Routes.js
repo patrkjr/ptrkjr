@@ -27,7 +27,14 @@ const config = {
       path: ''
     },
     Projects: {
-      path: 'projects'
+      screens: {
+        Projects: {
+          path: '/projects'
+        },
+        ProjectDetails: {
+          path: '/projects/:slug'
+        }
+      }
     },
     NotFound: '*'
   },

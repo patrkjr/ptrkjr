@@ -22,7 +22,7 @@ const DefaultTheme = {
     background: Colors.white,
     cardBackground: Colors.lightGrey,
     text: Colors.black,
-    border: Colors.lightGrey,
+    border: Colors.darkGrey,
     notification: 'rgb(255, 69, 58)'
   }
 }
@@ -67,7 +67,7 @@ const mediumShadow = {
   elevation: 12,
   shadowOffset: {
     width: 0,
-    height: 4,
+    height: 6,
   },
   shadowOpacity: 0.2,
   shadowRadius: 30,
