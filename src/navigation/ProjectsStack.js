@@ -15,7 +15,9 @@ const ProjectsStack = ({ navigation }) => {
         options={() => {return {title: 'BØ!' }}}
       />
       <Stack.Screen name="ProjectDetails" component={ProjectDetailsScreen}
-        options={({route}) => { return({title: `ptrkjr | ${route.params.slug}`})}}
+        options={({route}) => { return({
+          title: `ptrkjr | ${route.params.slug}`
+        })}}
       />
     </Stack.Navigator>
   )

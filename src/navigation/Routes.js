@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
 import { useColorScheme } from 'react-native-appearance';
@@ -7,6 +8,7 @@ import { DefaultTheme, DarkTheme } from '../../constants/Styles';
 
 import MainStack from './MainStack'
 import HomeScreen from '../screens/HomeScreen';
+import IconButton from '../components/IconButton';
 
 import * as Localization from 'expo-localization';
 import i18n from 'i18n-js';
@@ -75,11 +77,28 @@ export default function Routes(){
     }
   }, [systemTheme]);
 
+  const styles = {
+    widget: {
+      width: 54,
+      height: 54,
+      position: 'fixed',
+      backgroundColor: scheme == 'light' ? 'rgba(255,255,255,.9)' : 'rgba(0,0,0,.9)',
+      bottom: 120,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderTopRightRadius: 6,
+      borderBottomRightRadius: 6
+    }
+  }
+
   return(
     <LocalizationContext.Provider value={localizationContext}>
     <ThemeContext.Provider value={themeContext}>
       <NavigationContainer linking={linking} ref={navigationRef} theme={scheme == 'dark' ? DarkTheme : DefaultTheme }>
         <MainStack/>
+        <View style={styles.widget}>
+          <IconButton name={'sun'} size={30} color={scheme == 'dark' ? 'white' : 'black'} onPress={() => setScheme(scheme == 'dark' ? 'light' : 'dark')}/>
+        </View>
       </NavigationContainer>
     </ThemeContext.Provider>
     </LocalizationContext.Provider>

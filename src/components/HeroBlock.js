@@ -21,7 +21,7 @@ const HeroBlock = ({ title, release, font, themes, linkTo = "", containerStyle }
         </View>
         { theme.img &&
           <View
-            style={[styles.imageContainer, isHovered && { shadowRadius: 80, shadowOpacity: 0.3, transform: [{ scale: 1.017 }] }]}
+            style={[styles.imageContainer, isHovered && { shadowRadius: 80, shadowOpacity: 0.3, transform: [{ scale: 1.033 }] }]}
           >
             <View style={[styles.toolbar, {backgroundColor: !dark ? 'rgba(255,255,255, .6)' : 'rgba(0,0,0,.6)', borderColor: dark ? 'rgba(255,255,255, .24)' : 'rgba(255,255,255, .6)'}]}>
               <View style={[styles.dot, { backgroundColor: '#EB5757'}]}/>

@@ -7,6 +7,7 @@ import { Layouts, Colors, FontStyles, DefaultTheme, DarkTheme } from '../../cons
 import Link from './Link';
 import IconButton from './IconButton';
 import { Feather } from '@expo/vector-icons';
+import Logo from './Logo';
 
 import {LocalizationContext} from '../navigation/Routes';
 
@@ -14,7 +15,9 @@ const Header = ({ scene, ...otherProps }) => {
   const { locale, setLocale } = useContext(LocalizationContext);
   const { dark, colors } = useTheme();
   const { options } = scene.descriptor;
+  const { name } = scene.route;
   const { headerStyle } = options;
+  const hoverColor = ( name == 'Home' && !dark ) ? 'white' : colors.primary
 
   const { scheme, setScheme } = useContext(ThemeContext);
 
@@ -23,50 +26,54 @@ const Header = ({ scene, ...otherProps }) => {
   }
   return <View style={[headerStyle, styles.container]}>
     <View style={styles.headerLeft}>
+    <Link to="/">
+      <Logo/>
+    </Link>
+    </View>
+    <View style={{ flexDirection: 'row'}}>
+      <Link style={[FontStyles.h5, styles.navItem, name == 'Home' && styles.current]} hoverStyle={{ color: colors.text }} to="/">Home</Link>
+      <Link style={[FontStyles.h5, styles.navItem, name == 'Projects' && styles.current]} hoverStyle={{ color: colors.text }} to="/projects">Projects</Link>
+    </View>
+    <View style={styles.headerRight}>
       <Link
         style={styles.iconButton}
         to='tel:+45 42 33 12 33'
         accessibilityRole="link"
       >
-        <IconButton name={'phone'} color={Colors.white} size={30}/>
+        <IconButton name={'phone'} color={colors.text} size={30}/>
       </Link>
       <Link
         to='mailto:patrick.jessen@icloud.com'
         accessibilityRole="link"
       >
-        <IconButton name={'mail'} color={Colors.white} size={30}/>
+        <IconButton name={'mail'} color={colors.text} size={30}/>
       </Link>
-    </View>
-    <View>
-      <Link to="/">Home</Link>
-      <Link to="/projects">Projects</Link>
-    </View>
-    <View style={styles.headerRight}>
-      <IconButton style={styles.iconButton} name={ dark ? 'sun' : 'moon'} color={Colors.white} size={30}
-        onPress={handleOnChangeTheme}
-      />
-      <TouchableOpacity
-        style={styles.locale}
-        onPress={() => {
-          setLocale(locale == 'da-dk' ? 'en-GB' : 'da-dk')
-        }}
-      >
-        <Feather name={'globe'} size={30} color={Colors.white}/>
-        <Text style={[FontStyles.h5, { color: Colors.white, marginLeft: Layouts.smallSpacing * 2 }]}>
-        {
-          locale.substring(0,2).toUpperCase()
-        }
-        </Text>
-      </TouchableOpacity>
     </View>
   </View>
 }
+
+// <TouchableOpacity
+//   style={styles.locale}
+//   onPress={() => {
+//     setLocale(locale == 'da-dk' ? 'en-GB' : 'da-dk')
+//   }}
+// >
+//   <Feather name={'globe'} size={30} color={colors.text}/>
+//   <Text style={[FontStyles.h5, { color: colors.text, marginLeft: Layouts.smallSpacing * 2 }]}>
+//   {
+//     locale.substring(0,2).toUpperCase()
+//   }
+//   </Text>
+// </TouchableOpacity>
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     width: '100%',
+    flexWrap: 'wrap',
     alignItems: 'center',
+    paddingVertical: 10,
+    minWidth: 340,
     paddingHorizontal: Layouts.largeSpacing,
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -74,6 +81,7 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     flexDirection: 'row',
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
   headerLeft: {
@@ -92,6 +100,14 @@ const styles = StyleSheet.create({
   },
   iconButton: {
     marginRight: Layouts.mediumSpacing
+  },
+  navItem: {
+    paddingHorizontal: Layouts.mediumSpacing,
+    paddingVertical: 10,
+    borderRadius: Layouts.smallRadius
+  },
+  current: {
+    backgroundColor: 'rgba(0,0,0,.12)'
   }
 })
 
