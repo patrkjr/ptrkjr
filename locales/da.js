@@ -12,6 +12,11 @@ const da = {
     ladop: 'Den nemmeste måde at oplade din elbil derhjemme.',
     ptrkjr: 'En personlig side, til at fremvise mine evner i design og programmering.',
     zeam: 'Den nemmeste måde at holde styr på bødekassen i din klub.'
+  },
+  noProject: {
+    title: 'Intet projekt her',
+    text: 'Jeg har ikke et projekt her. Måske en dag... 🥳 Ind til da, kan du tjekke',
+    link: 'mine andre projekter'
   }
 };
 

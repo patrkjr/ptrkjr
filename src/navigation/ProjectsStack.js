@@ -12,7 +12,7 @@ const ProjectsStack = ({ navigation }) => {
       screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Projects" component={ProjectsScreen}
-        options={() => {return {title: 'BØ!' }}}
+        options={() => {return {title: 'ptrkr | projects' }}}
       />
       <Stack.Screen name="ProjectDetails" component={ProjectDetailsScreen}
         options={({route}) => { return({

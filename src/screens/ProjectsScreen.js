@@ -22,7 +22,7 @@ const ProjectsScreen = () => {
           linkTo={project.slug}
           themes={project.themes}
           font={project.font}
-          containerStyle={key == 0 ? { paddingTop: 80 } : null}
+          containerStyle={key == 0 ? { paddingTop: 100 } : null}
         />
       )
     }

@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
-import {View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import { useTheme } from '@react-navigation/native';
 import { ThemeContext } from '../navigation/Routes';
+import DATA from '../../public/data';
 
 import { Layouts, Colors, FontStyles, DefaultTheme, DarkTheme } from '../../constants/Styles';
 import Link from './Link';
@@ -24,32 +25,30 @@ const Header = ({ scene, ...otherProps }) => {
   const handleOnChangeTheme = () => {
     setScheme(scheme == 'light' ? 'dark' : 'light');
   }
-  return <View style={[headerStyle, styles.container]}>
+  return <ImageBackground imageStyle={{ flex: 1, backgroundColor: colors.background, opacity: 0.65, minHeight: '100%'}} style={[headerStyle, styles.container]}>
     <View style={styles.headerLeft}>
     <Link to="/">
-      <Logo/>
+      <Logo color={colors.text}/>
     </Link>
     </View>
-    <View style={{ flexDirection: 'row'}}>
-      <Link style={[FontStyles.h5, styles.navItem, name == 'Home' && styles.current]} hoverStyle={{ color: colors.text }} to="/">Home</Link>
-      <Link style={[FontStyles.h5, styles.navItem, name == 'Projects' && styles.current]} hoverStyle={{ color: colors.text }} to="/projects">Projects</Link>
-    </View>
     <View style={styles.headerRight}>
+      <Link style={[ styles.navItem, name == 'Home' && styles.current]} hoverStyle={{ color: colors.text, opacity: 1 }} to="/">Home</Link>
+      <Link style={[ styles.navItem, name == 'Projects' && styles.current]} hoverStyle={{ color: colors.text, opacity: 1}} to="/projects">Projects</Link>
       <Link
         style={styles.iconButton}
         to='tel:+45 42 33 12 33'
         accessibilityRole="link"
       >
-        <IconButton name={'phone'} color={colors.text} size={30}/>
+        <IconButton name={'phone'} color={colors.text} size={26}/>
       </Link>
       <Link
         to='mailto:patrick.jessen@icloud.com'
         accessibilityRole="link"
       >
-        <IconButton name={'mail'} color={colors.text} size={30}/>
+        <IconButton name={'mail'} color={colors.text} size={26}/>
       </Link>
     </View>
-  </View>
+  </ImageBackground>
 }
 
 // <TouchableOpacity
@@ -99,15 +98,22 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   iconButton: {
+    paddingHorizontal: Layouts.mediumSpacing,
     marginRight: Layouts.mediumSpacing
   },
   navItem: {
     paddingHorizontal: Layouts.mediumSpacing,
-    paddingVertical: 10,
+    paddingVertical: 12,
+    marginRight: Layouts.mediumSpacing,
+    fontSize: 16,
+    fontWeight: '700',
+    fontFamily: 'Inter_700Bold',
+    opacity: 0.8,
     borderRadius: Layouts.smallRadius
   },
   current: {
-    backgroundColor: 'rgba(0,0,0,.12)'
+    backgroundColor: 'rgba(0,0,0,.18)',
+    opacity: 1,
   }
 })
 

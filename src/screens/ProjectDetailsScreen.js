@@ -11,6 +11,7 @@ import Svg, {
   ClipPath,
 } from "react-native-svg";
 import { LocalizationContext } from '../navigation/Routes';
+import ProjectNotFound from '../components/ProjectNotFound';
 
 import DATA from '../../public/data';
 import Link from '../components/Link';
@@ -23,9 +24,7 @@ const ProjectDetailsScreen = ({ route, navigation }) => {
   const { t } = useContext(LocalizationContext);
 
   if (!data) {
-    return <View style={{ flex: 1, marginTop: 80 }}>
-      <Text>I dont have a project here. One day maybe... 🥳 In the meantime  Have a look at <Link to="/projects">my other projects</Link>.</Text>
-    </View>
+    return <ProjectNotFound/>
   }
   const theme = dark ? data.themes.darkTheme : data.themes.defaultTheme
 

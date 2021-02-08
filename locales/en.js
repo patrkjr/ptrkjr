@@ -13,6 +13,11 @@ const en = {
     ladop: 'The most convenient way to charge your EV at home.',
     ptrkjr: 'A personal site to showcase my skill, in a diguestable form.',
     zeam: 'Managing the penality box of sunday league has never been easier.'
+  },
+  noProject: {
+    title: 'Project not found',
+    text: 'I dont have a project here. One day maybe... 🥳 In the meantime, have a look at',
+    link: 'my other projects'
   }
 };
 
