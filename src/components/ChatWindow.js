@@ -20,7 +20,7 @@ const ChatWindow = ({ width }) => {
   const ProductDesigner = () => {
     const [showBubbles, setShowBubbles] = useState(true);
     useEffect(() => {
-      setTimeout(() => setShowBubbles(false), 2500);
+      setTimeout(() => setShowBubbles(false), 1900);
     },[])
     if (showBubbles) {
       return <Bubbles />
@@ -52,29 +52,29 @@ const ChatWindow = ({ width }) => {
   useEffect(() => {
     setTimeout(function () {
       addMsg(
-        () => <Msg msg={'hi'} delay={1200}/>
+        () => <Msg msg={'hi'} delay={1000}/>
       )
     }, startMsg);
     setTimeout(function () {
       addMsg(
-        () => <Msg msg={'myNameIs'} delay={2500}/>
+        () => <Msg msg={'myNameIs'} delay={1500}/>
+      )
+    }, startMsg += 1600);
+    setTimeout(function () {
+      addMsg(
+        () => <Msg msg={'andImA'} delay={1700}/>
       )
     }, startMsg += 2000);
     setTimeout(function () {
       addMsg(
-        () => <Msg msg={'andImA'} delay={2500}/>
-      )
-    }, startMsg += 3200);
-    setTimeout(function () {
-      addMsg(
         () => <ProductDesigner/>
         )
-    }, startMsg += 3500);
+    }, startMsg += 2600);
     setTimeout(function () {
       addMsg(
-        () => <Msg msg={'sendMeAMsg'} delay={3500}/>
+        () => <Msg msg={'sendMeAMsg'} delay={1900}/>
       )
-    }, startMsg += 3000);
+    }, startMsg += 2300);
   }, []);
 
   return <View style={[styles.container, { width: width(), backgroundColor: colors.background }]}>
